@@ -1,6 +1,6 @@
 pragma solidity ^0.4.23;
 
-import './ERC721.sol';
+import "./ERC721.sol";
 
 contract ERC721Token is ERC721 {
 
@@ -10,9 +10,11 @@ contract ERC721Token is ERC721 {
     mapping(address => mapping(address => bool)) ownerToOperator;
 
     modifier hasPermission(address _caller, uint256 _tokenId) {
-        require(tokenToOwner[_tokenId] == _caller || 
-                getApproved(_tokenId) == _caller  ||
-                isApprovedForAll(tokenToOwner[_tokenId],_caller));
+        require(
+            tokenToOwner[_tokenId] == _caller ||
+            getApproved(_tokenId) == _caller || 
+            isApprovedForAll(tokenToOwner[_tokenId],_caller),
+            "Caller doesn\'t have correct permissions");
         _;
     }
 
@@ -80,12 +82,15 @@ contract ERC721Token is ERC721 {
     /// @param _to The new owner
     /// @param _tokenId The NFT to transfer
     function transferFrom(address _from, address _to, uint256 _tokenId) external payable hasPermission(msg.sender,_tokenId) {
+        transferFromHelper(_from,_to,_tokenId);
+    }
+
+    function transferFromHelper(address _from, address _to, uint256 _tokenId) internal {
         tokenToOwner[_tokenId] = _to;
         ownerToBalance[_from] -= 1;
 
         emit Transfer(_from,_to,_tokenId);
     }
-
     /// @notice Change or reaffirm the approved address for an NFT
     /// @dev The zero address indicates there is no approved address.
     ///  Throws unless `msg.sender` is the current NFT owner, or an authorized

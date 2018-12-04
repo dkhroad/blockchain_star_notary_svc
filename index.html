@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Star Notary</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+        <script src="./starNotary.js"></script>    
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Star Notary</h1>
+
+            <div class="row">
+                <label class="bold">Star Name:</label>
+                <input id="star-name" type="text" placeholder="Star Name"></input>
+            </div>
+            <div class="row">
+                <label class="bold">Star Ra:</label>
+                <input id="star-ra" type="text" placeholder="Star Ra"></input>
+            </div>
+            <div class="row">
+                <label class="bold">Star Dec:</label>
+                <input id="star-dec" type="text" placeholder="Star Dec"></input>
+            </div>
+            <div class="row">
+                <label class="bold">Star Mag:</label>
+                <input id="star-mag" type="text" placeholder="Star Mag"></input>
+            </div>
+            <div class="row">
+                <label class="bold">Star Story:</label>
+                <input id="star-story" type="text" placeholder="Star Story"></input>
+            </div>
+            <div class="row">
+                <label class="bold">Token Id:</label>
+                <input id="token-id" type="text" placeholder="Token Id"></input>
+            </div>
+
+            <button id="claim-button" onclick="claimButtonClicked()">Claim Star</button>
+
+            <hr>
+            <div class="row">
+                <label class="bold">Query Token Id:</label>
+                <input id="query-token-id" type="text" placeholder="Token Id"></input>
+            </div>
+            <button id="claim-button" onclick="queryButtonClicked()">Query Star</button>
+            <div class="row">
+                <label id="query-result"></label>
+            </div>
+            <hr>
+            <div class="row"> 
+                <label class="bold">Status:</label>
+                <label id="status"></label>
+            </div>
+        </div>
+
+         
+    </body>
+</html>

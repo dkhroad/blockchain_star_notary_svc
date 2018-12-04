@@ -35,4 +35,4 @@ truffle migrate --network test
 export MNEMONIC=<mnemominc phrase>
 export LOCAL_KEY=<infura API key>
 truffle migrate ---network rinkeby
-``
+```
